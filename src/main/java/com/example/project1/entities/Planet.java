@@ -3,6 +3,10 @@ package com.example.project1.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import java.util.List;
+
 import javax.persistence.Column;
 
 @Entity
@@ -15,7 +19,8 @@ public class Planet {
 	private String name;
     @Column(name="ownerid")
 	private int ownerId;
-	
+	// @OneToMany(mappedBy = "myplanetid")
+    // private List<Moon> moons;
 	
     public int getId() {
         return id;
@@ -35,6 +40,12 @@ public class Planet {
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
     }
+    // public List<Moon> getMoons() {
+    //     return this.moons;
+    // }
+    // public void setMoons(List<Moon> moons) {
+    //     this.moons = moons;
+    // }
     @Override
     public String toString() {
         return "Planet [id=" + id + ", name=" + name + ", ownerId=" + ownerId + "]";

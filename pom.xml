@@ -50,7 +50,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<natures>
-		<nature>org.jkiss.dbeaver.DBeaverNature</nature>
-	</natures>
 </project>
