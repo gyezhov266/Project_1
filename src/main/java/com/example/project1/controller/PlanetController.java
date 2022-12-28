@@ -44,5 +44,13 @@ public class PlanetController {
             return new ResponseEntity<>(planets,HttpStatus.NOT_FOUND);
         }
     }
+    
+    // Get moons associated with a planet
+    //	app.get("api/planet/{id}/moons", ctx -> moonController.getPlanetMoons(ctx));
 
+    // Create a new planet, sending the data in the body as JSON
+	//	app.post("api/planet", ctx -> planetController.createPlanet(ctx));
+
+    // Delete a planet and all of its moons
+    //app.delete("api/planet/{id}", ctx -> planetController.deletePlanet(ctx));
 }
