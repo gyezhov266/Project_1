@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.project1.entities.Planet;
+import com.example.project1.exceptions.EntityNotFound;
 import com.example.project1.repository.PlanetDao;
 
 @Service
@@ -19,7 +20,7 @@ public class PlanetService {
         if (possiblePlanet.isPresent()){
             return possiblePlanet.get();
         } else {
-            return new Planet();
+            throw new EntityNotFound("Planet Not Found");
         }
     }
 
@@ -28,7 +29,7 @@ public class PlanetService {
         if (possiblePlanet.isPresent()){
             return possiblePlanet.get();
         } else {
-            return new Planet();
+            throw new EntityNotFound("Planet Not Found");        
         }
     }
 

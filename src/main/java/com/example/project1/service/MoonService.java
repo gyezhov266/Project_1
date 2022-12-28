@@ -7,7 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
  import com.example.project1.entities.Moon;
- import com.example.project1.repository.MoonDao;
+import com.example.project1.exceptions.EntityNotFound;
+import com.example.project1.repository.MoonDao;
 
 @Service
 public class MoonService {
@@ -38,7 +39,7 @@ public class MoonService {
         if (possibleMoon.isPresent()){
             return possibleMoon.get();
         } else {
-            return new Moon();
+            throw new EntityNotFound("Moon Not Found");
         }
     }
 
@@ -47,7 +48,7 @@ public class MoonService {
         if (possibleMoon.isPresent()){
             return possibleMoon.get();
         } else {
-            return new Moon();
+            throw new EntityNotFound("Moon Not Found");
         }
     }
 
