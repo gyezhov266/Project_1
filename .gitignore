@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+.dbeaver/.project-metadata.json.bak
+.dbeaver/project-metadata.json
+Scripts/Script.sql

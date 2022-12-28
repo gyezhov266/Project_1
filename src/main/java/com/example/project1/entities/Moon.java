@@ -3,7 +3,6 @@ package com.example.project1.entities;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Column;
 
 @Entity
@@ -16,8 +15,7 @@ public class Moon {
 	private String name;
     @Column(name="myplanetid")
 	private int myPlanetId;
-    @ManyToOne
-    private Planet planet;
+
     public int getId() {
         return id;
     }

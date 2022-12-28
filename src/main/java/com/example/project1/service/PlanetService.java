@@ -35,4 +35,23 @@ public class PlanetService {
     public List<Planet> getAllPlanets() {
         return this.planetDao.findAll();
     }
+
+    public String createPlanet(Planet planet){
+        this.planetDao.createPlanet(planet.getName(), planet.getOwnerId());
+        return "Planet Created!";
+    }
+
+    // public String updatePlanet(Planet planet){
+    //     int rowCount = this.planetDao.updatePlanet(planet.getName(), planet.getOwnerId(), planet.getId());
+    //     if (rowCount == 1){
+    //         return "Planet Updated Successfully";
+    //     } else {
+    //         return "Could not update table";
+    //     }
+    // }
+
+    public String deletePlanetById(int id){
+        this.planetDao.deleteById(id);
+        return "Planet with given ID deleted";
+    }
 }

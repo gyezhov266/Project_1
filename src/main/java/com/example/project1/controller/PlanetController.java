@@ -2,10 +2,15 @@ package com.example.project1.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+//import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.project1.entities.Planet;
 import com.example.project1.service.PlanetService;
@@ -49,8 +54,19 @@ public class PlanetController {
     //	app.get("api/planet/{id}/moons", ctx -> moonController.getPlanetMoons(ctx));
 
     // Create a new planet, sending the data in the body as JSON
-	//	app.post("api/planet", ctx -> planetController.createPlanet(ctx));
+    @PostMapping("/planet")
+    public ResponseEntity<String> createPlanet(@RequestBody Planet planet){
+        String message = this.planetService.createPlanet(planet);
+        return new ResponseEntity<>(message, HttpStatus.CREATED);
+    }
 
-    // Delete a planet and all of its moons
-    //app.delete("api/planet/{id}", ctx -> planetController.deletePlanet(ctx));
+    @DeleteMapping("/planet/{id}")
+    public ResponseEntity<String> deletePlanet(@PathVariable int id){
+        try{
+            String message = this.planetService.deletePlanetById(id);
+            return new ResponseEntity<>(message, HttpStatus.OK);
+        } catch (EmptyResultDataAccessException e){ 
+            return new ResponseEntity<>("Could not Delete Planet", HttpStatus.CREATED);
+        }
+    }
 }
