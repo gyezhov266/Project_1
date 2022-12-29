@@ -9,12 +9,12 @@ services:
 
   # the name of this serivce(container) is called "app"
   app:
-    image: project1_sample
+    image: gyezhov266/project1:latest
     # the build section provides docker with the details needed to build the specified image
-    build:
+    # build:
       # context tells docker where the dockerfile is: . indicates current directory
-      context: .
-      dockerfile: dockerfile
+      # context: .
+      # dockerfile: dockerfile
     # container_name sets the name of the container
     container_name: project1
     # ports maps the host port (left side) to the container port (right side)
