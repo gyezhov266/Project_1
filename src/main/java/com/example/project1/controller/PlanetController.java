@@ -1,6 +1,9 @@
 package com.example.project1.controller;
 import java.util.List;
 
+import org.postgresql.util.PSQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
@@ -13,17 +16,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.project1.entities.Planet;
+import com.example.project1.exceptions.AuthenticationFailed;
 import com.example.project1.exceptions.EntityNotFound;
 import com.example.project1.service.PlanetService;
 
 @RestController
 public class PlanetController {
+    private static Logger planetLogger = LoggerFactory.getLogger(PlanetController.class);
+    
     @Autowired
     private PlanetService planetService;
 
+    @ExceptionHandler(AuthenticationFailed.class)
+    public ResponseEntity<String> authenticationFailed(AuthenticationFailed e) {
+        planetLogger.error(e.getLocalizedMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+
     @ExceptionHandler(EntityNotFound.class)
     public ResponseEntity<String> entityNotFound(EntityNotFound e){
+        planetLogger.error(e.getLocalizedMessage(), e);
         return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PSQLException.class)
+    public ResponseEntity<String> sqlIssue(PSQLException e){
+        planetLogger.error(e.getLocalizedMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
+    @ExceptionHandler(EmptyResultDataAccessException.class)
+    public ResponseEntity<String> deleteFailed(EmptyResultDataAccessException e){
+        planetLogger.error(e.getLocalizedMessage(), e);
+        return new ResponseEntity<>("Could not delete Team", HttpStatus.BAD_REQUEST);
     }
     
     @GetMapping("/planet/id/{id}")

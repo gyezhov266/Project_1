@@ -14,7 +14,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
             throws Exception {
         MDC.clear(); // this removes all key/value pairs, clearing it up for the next http request
-        System.out.println("logging interceptor afterCompletion executed");
+        System.out.println("Logging Interceptor afterCompletion executed");
     }
 
     @Override
@@ -25,7 +25,4 @@ public class LoggingInterceptor implements HandlerInterceptor {
         System.out.println("Logging Interceptor preHandle executed");
         return true;
     }
-
-    
-    
 }

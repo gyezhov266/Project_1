@@ -34,7 +34,4 @@ public class WebMVCConfig implements WebMvcConfigurer { // Spring Web is the new
         registry.addInterceptor(authenticationInterceptor).addPathPatterns("/api/**").order(1);
         
     }
-
-    
-
 }
