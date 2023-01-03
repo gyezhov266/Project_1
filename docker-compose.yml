@@ -34,3 +34,14 @@ services:
       - 3000:3000
     depends_on:
       - loki
+  
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    volumes:
+      - ./configs/prometheus-rules.yml:/etc/prometheus/prometheus-rules.yml
+      - ./configs/prometheus-config.yml:/etc/prometheus/prometheus-config.yml
+    # - prometheus-data:/prometheus
+    container_name: prometheus-logging
+    command: "--config.file=/etc/prometheus/prometheus-config.yml"
