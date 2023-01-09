@@ -1,0 +1,15 @@
+apiVersion: v1 
+kind: Pod
+metadata:
+  name: planetarium-pod
+  labels:
+    pod: planetarium-pod
+    extra: another-value
+
+spec:
+  containers:
+    - name: planetarium-container
+      image: gyezhov266/project1:latest
+      ports:
+      - containerPort: 8080
+      
