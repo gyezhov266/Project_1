@@ -1,0 +1,15 @@
+aviVersion: v1
+
+kind: Pod
+
+metadata:
+  name: planetarium-pod
+  labels:
+    pod: greeter-pod
+
+spec:
+  containers:
+    - name: planetarium-container
+      image: allanlee0724/planetariumbeta:rolling
+      ports:
+        - containerPort: 8080
