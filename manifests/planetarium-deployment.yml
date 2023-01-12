@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "planetarium-app"
-        image: "gyezhov266/project1:latest"
+        image: "teamkuberknights/planetarium:latestt"
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
