@@ -6,7 +6,7 @@ pipeline{
     }
 
     environment{
-        DEVOPS_REGISTRY='gyezhov266/devops'
+        DEVOPS_REGISTRY='teamkuberknights/devops'
         DEVOPS_IMAGE=''
     }
 
