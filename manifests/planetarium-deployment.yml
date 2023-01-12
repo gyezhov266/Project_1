@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: "planetarium-app"
-        image: "allanlee0724/planetariumbeta:rolling"
+        image: "gyezhov266/project1:latest"
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
@@ -28,12 +28,12 @@ spec:
       - name: promtail-container
         image: grafana/promtail
         args:
-        - -config.file=/etc/promtail/promtail.yml
+          - -config.file=/etc/promtail/promtail.yml
         volumeMounts:
-        - name: logs
-          mountPath: /logs
-        - name: promtail-config
-          mountPath: /etc/promtail
+          - name: logs
+            mountPath: /logs
+          - name: promtail-config
+            mountPath: /etc/promtail
 
       volumes:
         - name: logs
