@@ -34,3 +34,7 @@ build/
 .dbeaver/.project-metadata.json.bak
 .dbeaver/project-metadata.json
 Scripts/Script.sql
+
+application.properties
+
+*.tfvars
