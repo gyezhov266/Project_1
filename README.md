@@ -7,7 +7,9 @@
 - configured Jenkins
 - discovered issue with logging: localhost8080 generates log but cluster url does not
     - will set up other infrastructures and come back if needed
+
     
+
 
 ## update Jan 12, 2023
 - added imaged for static and rolling logs
