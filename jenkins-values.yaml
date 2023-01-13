@@ -25,11 +25,11 @@ controller:
 
 agent:
   podTemplate:
-    project_2: |
-        - name: project_2
-          label: jenkins-project_2
+    devops: |
+        - name: devops
+          label: jenkins-devops
           serviceAccount: jenkins
           containers:
-          - name: docker
+          - name: project_2
             image: docker:18-dind
             privileged: true
