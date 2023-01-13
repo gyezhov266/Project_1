@@ -1,30 +1,23 @@
 apiVersion: "apps/v1"
 kind: "Deployment"
 metadata:
-  name: "english-greeter-deployment"
+  name: "planetarium-deployment"
   namespace: "default"
   labels:
-    app: "english-greeter"
-spec: # this is where we create the replicaset specs
+    app: "planetarium"
+spec: 
   replicas: 3
-  # # minReadySeconds: 5
-  # strategy:
-  #   type: RollingUpdate
-  #   rollingUpdate:
-  #     maxSurge: 1
-  #     maxUnavailable: 0
   selector:
     matchLabels:
-      app: "english-greeter"
-  template: # this is where the pod information starts
-    metadata: # I am not setting a name for the pods because the deployment will handle that for me
+      app: "planetarium"
+  template: 
+    metadata: 
       labels:
-        app: "english-greeter"
+        app: "planetarium"
     spec:
-      # terminationGracePeriodSeconds: 30
       containers:
-      - name: "english-greeter-app"
-        image: "esuminski/english:logging"
+      - name: "planetarium-app"
+        image: "teamkuberknights/planetarium:latest"
         imagePullPolicy: "Always"
         ports:
         - containerPort: 8080
@@ -35,12 +28,12 @@ spec: # this is where we create the replicaset specs
       - name: promtail-container
         image: grafana/promtail
         args:
-        - -config.file=/etc/promtail/promtail.yml
+          - -config.file=/etc/promtail/promtail.yml
         volumeMounts:
-        - name: logs
-          mountPath: /logs
-        - name: promtail-config
-          mountPath: /etc/promtail
+          - name: logs
+            mountPath: /logs
+          - name: promtail-config
+            mountPath: /etc/promtail
 
       volumes:
         - name: logs
