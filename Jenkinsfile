@@ -6,14 +6,14 @@ pipeline{
     }
 
     environment{
-        DEVOPS_REGISTRY='teamkuberknights/planetarium'
+        DEVOPS_REGISTRY='teamkuberknights/planetarium:rollingNew'
         DEVOPS_IMAGE=''
     }
 
     stages{
         stage("build and push docker image"){
             steps{
-                container("project_2"){
+                container("docker"){
                     script{
                         DEVOPS_IMAGE=docker.build(DEVOPS_REGISTRY, ".")
                         docker.withRegistry("", 'docker-creds'){
