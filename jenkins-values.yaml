@@ -30,6 +30,6 @@ agent:
           label: jenkins-devops
           serviceAccount: jenkins
           containers:
-          - name: project_2
+          - name: docker
             image: docker:18-dind
             privileged: true
