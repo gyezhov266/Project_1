@@ -1,12 +1,12 @@
 pipeline{
     agent{
         kubernetes{
-            inheritFrom "devops"
+            inheritFrom "project_2"
         }
     }
 
     environment{
-        DEVOPS_REGISTRY='teamkuberknights/devops'
+        DEVOPS_REGISTRY='teamkuberknights/project_2'
         DEVOPS_IMAGE=''
     }
 
