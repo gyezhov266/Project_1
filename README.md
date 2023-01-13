@@ -13,6 +13,8 @@
 
 
 
+
+
 ## update Jan 12, 2023
 - added imaged for static and rolling logs
 - fixed issues with pods restarting by updating security groups for RDS
