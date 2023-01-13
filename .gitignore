@@ -38,3 +38,4 @@ Scripts/Script.sql
 application.properties
 
 *.tfvars
+*.log

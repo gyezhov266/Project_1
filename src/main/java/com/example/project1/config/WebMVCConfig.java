@@ -15,9 +15,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class WebMVCConfig implements WebMvcConfigurer { // Spring Web is the new name for Spring MVC
-    
-    @Autowired
-    private BasicInterceptor basicInterceptor;
     @Autowired
     private LoggingInterceptor loggingInterceptor;
     @Autowired
@@ -29,7 +26,6 @@ public class WebMVCConfig implements WebMvcConfigurer { // Spring Web is the new
          * addInterceptor tells spring to keep track of the basicInterceptor that is created at runtime
          * addPathPatterns tells Spring what http url patterns should be intercepted by our interceptor
          */
-        registry.addInterceptor(basicInterceptor).addPathPatterns("/**").order(Ordered.LOWEST_PRECEDENCE);
         registry.addInterceptor(loggingInterceptor).addPathPatterns("/**").order(Ordered.HIGHEST_PRECEDENCE);
         registry.addInterceptor(authenticationInterceptor).addPathPatterns("/api/**").order(1);
         
