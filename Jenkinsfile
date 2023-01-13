@@ -13,7 +13,7 @@ pipeline{
     stages{
         stage("build and push docker image"){
             steps{
-                container("docker"){
+                container("project_2"){
                     script{
                         DEVOPS_IMAGE=docker.build(DEVOPS_REGISTRY, ".")
                         docker.withRegistry("", 'docker-creds'){
