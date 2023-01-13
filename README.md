@@ -4,6 +4,7 @@
 - refurnished Spring app 
 - recreated docker image named rollingNew. :latest and :rolling temporarily not in use
 - fixed issues with adding custom dashboards to Grafana: New->Import->JSON file
+- fixed issues with github webhook setup with status code 302: the webhook url should end with "/"
 - configured Jenkins
 - discovered issue with logging: localhost8080 generates log but cluster url does not
     - will set up other infrastructures and come back if needed
