@@ -8,7 +8,9 @@
 - discovered issue with logging: localhost8080 generates log but cluster url does not
     - will set up other infrastructures and come back if needed
 
-    
+
+
+
 
 
 ## update Jan 12, 2023
