@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
- import com.example.project1.entities.Moon;
+import com.example.project1.entities.Moon;
 import com.example.project1.exceptions.EntityNotFound;
 import com.example.project1.repository.MoonDao;
 
@@ -59,4 +59,8 @@ public class MoonService {
     public List<Moon> getMoonsByMoonId(Iterable<Integer> id) {
          return this.moonDao.findAllById(id);
     }
+
+    public List<Moon> getMoonsByPlanetId(int myplanetid) {
+        return this.moonDao.getMoonsFromPlanet(myplanetid);
+   }
 }
