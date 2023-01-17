@@ -14,5 +14,5 @@ scrape_configs:
       - targets:
           - localhost
         labels:
-          job: project2
+          job: planetarium
           __path__: /var/log/rollingFile.log

@@ -11,6 +11,8 @@
 - docker image recreated and uploaded to the group account
 - discovered questions to be answered...
     - when doing "docker compose up -d", a Network project_2_default is being created... what is this?
+    - one prometheus-external-node is pending...
+    - prometheus data source not found on grafana. when manually adding, "Error reading Prometheus: An error occurred within the plugin"
 
 
 
