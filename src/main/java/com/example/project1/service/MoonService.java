@@ -16,7 +16,7 @@ public class MoonService {
     private MoonDao moonDao;
     
     public String createMoon(Moon moon){
-        this.moonDao.createMoon(moon.getName(), moon.getMyPlanetId());
+        this.moonDao.createMoon(moon.getId(), moon.getName(), moon.getMyPlanetId());
         return "Moon Created!";
     }
 

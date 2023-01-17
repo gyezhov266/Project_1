@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.project1.entities.Moon;
+import com.example.project1.exceptions.AuthenticationFailed;
 import com.example.project1.exceptions.EntityNotFound;
 import com.example.project1.service.MoonService;
 
@@ -26,6 +27,12 @@ public class MoonController {
     private MoonService moonService;
     private static Logger moonLogger = LoggerFactory.getLogger(MoonController.class);
 
+    @ExceptionHandler(AuthenticationFailed.class)
+    public ResponseEntity<String> authenticationFailed(AuthenticationFailed e){
+        moonLogger.error(e.getLocalizedMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.UNAUTHORIZED);
+    }
+    
     @ExceptionHandler(EntityNotFound.class)
     public ResponseEntity<String> entityNotFound(EntityNotFound e){
         moonLogger.error(e.getLocalizedMessage(), e);
@@ -44,12 +51,12 @@ public class MoonController {
         return new ResponseEntity<>("Could not delete Team", HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/moon/id/{id}")
+    @GetMapping("api/moon/id/{id}")
     public ResponseEntity<Moon> getMoonById(@PathVariable int id){
         return new ResponseEntity<>(this.moonService.getMoonById(id), HttpStatus.OK);
     }
 
-    @GetMapping("/moon/{name}")
+    @GetMapping("api/moon/{name}")
     public ResponseEntity<Moon> getMoonByName(@PathVariable String name){
         Moon moon = this.moonService.getMoonByName(name);
         if (moon.getId() != 0){
@@ -59,7 +66,7 @@ public class MoonController {
         }
     }
 
-    @GetMapping("/moons")
+    @GetMapping("api/moons")
     public ResponseEntity<List<Moon>> getAllMoons(){
         List<Moon> moons = this.moonService.getAllMoons();
         if (moons.size() > 0){
@@ -70,13 +77,13 @@ public class MoonController {
     }
 
     // Create a new moon, sending the data in the body as JSON
-    @PostMapping("/moon")
+    @PostMapping("api/moon")
     public ResponseEntity<String> createMoon(@RequestBody Moon moon){
         String message = this.moonService.createMoon(moon);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/moon/id/{id}")
+    @DeleteMapping("api/moon/id/{id}")
     public ResponseEntity<String> deleteMoon(@PathVariable int id){
         try{
             String message = this.moonService.deleteMoonById(id);
@@ -84,6 +91,11 @@ public class MoonController {
         } catch (EmptyResultDataAccessException e){ 
             return new ResponseEntity<>("Could not Delete Moon", HttpStatus.CREATED);
         }
+    }
+
+    @GetMapping("api/{myplanetid}/moons")
+    public ResponseEntity<List<Moon>> getMoonsByPlanetId(@PathVariable("myplanetid") int myPlanetId){
+        return new ResponseEntity<>(this.moonService.getMoonsByPlanetId(myPlanetId), HttpStatus.OK);
     }
 
 }

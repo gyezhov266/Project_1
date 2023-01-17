@@ -51,17 +51,17 @@ public class PlanetController {
         return new ResponseEntity<>("Could not delete Team", HttpStatus.BAD_REQUEST);
     }
     
-    @GetMapping("/planet/id/{id}")
+    @GetMapping("api/planet/id/{id}")
     public ResponseEntity<Planet> getPlanetById(@PathVariable int id){
         return new ResponseEntity<>(this.planetService.getPlanetById(id),HttpStatus.OK);
     }
 
-    @GetMapping("/planet/{name}")
+    @GetMapping("api/planet/{name}")
     public ResponseEntity<Planet> getPlanetByName(@PathVariable String name){
         return new ResponseEntity<>(this.planetService.getPlanetByName(name),HttpStatus.OK);
     }
 
-    @GetMapping("/planets")
+    @GetMapping("api/planets")
     public ResponseEntity<List<Planet>> getAllPlanets(){
         List<Planet> planets = this.planetService.getAllPlanets();
         if (planets.size() > 0){
@@ -74,13 +74,13 @@ public class PlanetController {
     // Get moons associated with a planet
     //	app.get("api/planet/{id}/moons", ctx -> moonController.getPlanetMoons(ctx));
 
-    @PostMapping("/planet")
+    @PostMapping("api/planet")
     public ResponseEntity<String> createPlanet(@RequestBody Planet planet){
         String message = this.planetService.createPlanet(planet);
         return new ResponseEntity<>(message, HttpStatus.CREATED);
     }
 
-    @DeleteMapping("/planet/{id}")
+    @DeleteMapping("api/planet/{id}")
     public ResponseEntity<String> deletePlanet(@PathVariable int id){
         try{
             String message = this.planetService.deletePlanetById(id);

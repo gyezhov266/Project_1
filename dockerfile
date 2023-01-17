@@ -5,5 +5,5 @@ COPY ./pom.xml pom.xml
 RUN mvn package
 
 FROM openjdk:11-jdk-slim
-COPY --from=builder target/project1-0.0.1-SNAPSHOT.jar project1.jar
-ENTRYPOINT ["java","-jar","project1.jar"]
+COPY --from=builder target/project2-0.0.1-SNAPSHOT.jar project2.jar
+ENTRYPOINT ["java","-jar","project2.jar"]

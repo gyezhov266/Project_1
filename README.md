@@ -1,13 +1,37 @@
 # Project Planetarium 
 
+## update Jan 17. 2023
+- GOOD NEWS: issues auto-fixed:
+    - pending prometheus external node auto replaced
+    - prometheus data source successfullly added
+    - jenkins pipeline successfully built without error messages
+- issue with logging: localhost8080 generates log but cluster url does not
+    - solved: updated webmvcconfig file and added /planetarium in the URI
+        - Collections can be run smoothly
+        - Cluster error logs (400) are not pushed to local logs but can be detected by Loki
+
+## update Jan 16, 2023
+- added minor details to the source code
+    - added DataIntegrityViolationException exception handler to prevent registering duplicate users
+    - made id a mandatory entry when creating moon/planet to ensure better workflow
+    - added "api" before moon and planet related URIs
+    - updated pom.xml and renamed mvn package as "project2"
+- tested source code with thunder client
+    - everything has passed with 200 and 201 except REGISTER: expect a 400/404 because we cannot register two users with the same username
+- docker image recreated and uploaded to the group account
+- discovered questions to be answered...
+    - when doing "docker compose up -d", a Network project_2_default is being created... what is this?
+    - one prometheus-external-node is pending...
+    - prometheus data source not found on grafana. when manually adding, "Error reading Prometheus: An error occurred within the plugin"
+
 ## update Jan 13, 2023
 - refurnished Spring app 
 - recreated docker image named rollingNew. :latest and :rolling temporarily not in use
 - fixed issues with adding custom dashboards to Grafana: New->Import->JSON file
+- fixed issues with github webhook setup with status code 302: the webhook url should end with "/"
 - configured Jenkins
 - discovered issue with logging: localhost8080 generates log but cluster url does not
     - will set up other infrastructures and come back if needed
-    
 
 ## update Jan 12, 2023
 - added imaged for static and rolling logs

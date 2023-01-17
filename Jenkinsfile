@@ -6,7 +6,7 @@ pipeline{
     }
 
     environment{
-        DEVOPS_REGISTRY='teamkuberknights/devops'
+        DEVOPS_REGISTRY='teamkuberknights/planetarium:rollingV3'
         DEVOPS_IMAGE=''
     }
 

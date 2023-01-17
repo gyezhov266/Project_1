@@ -2,7 +2,7 @@ version: '3'
 
 services:
   app:
-    image: teamkuberknights/planetarium:rollingNew
+    image: teamkuberknights/planetarium:rollingV3
     container_name: planetarium
     ports:
       - 8080:8080
@@ -22,7 +22,7 @@ services:
     container_name: promtail-logging
     volumes:
       - ./configs/promtail-config.yml:/etc/promtail/promtail-config.yml
-      - ./logs/staticLogs.log:/var/log/staticLogs.log
+      - ./logs/rollingFile.log:/var/log/rollingFile.log
     command: "--config.file=/etc/promtail/promtail-config.yml"
 
   grafana:

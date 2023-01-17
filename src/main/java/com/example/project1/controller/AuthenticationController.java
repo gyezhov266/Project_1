@@ -6,6 +6,7 @@ import org.postgresql.util.PSQLException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -25,6 +26,13 @@ public class AuthenticationController {
     @Autowired
     private UserService userService;
     
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<String> duplicateUser(DataIntegrityViolationException e){
+        authenticationLogger.error(e.getLocalizedMessage(), e);
+        return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+    
     @ExceptionHandler(EntityNotFound.class)
     public ResponseEntity<String> entityNotFound(EntityNotFound e){
         authenticationLogger.error(e.getLocalizedMessage(), e);
@@ -41,7 +49,6 @@ public class AuthenticationController {
     public String login(HttpSession session, @RequestBody UsernamePasswordAuthentication loginRequest){
         User u = this.userService.getUserByUsername(loginRequest);
         session.setAttribute("user", u);
-        System.out.println("session set");
         return "logged in successfully";
     }
 
