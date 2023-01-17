@@ -1,5 +1,15 @@
 # Project Planetarium 
 
+## update Jan 16, 2023
+- added minor details to the source code
+    - added DataIntegrityViolationException exception handler to prevent registering duplicate users
+    - made id a mandatory entry when creating moon/planet to ensure better workflow
+    - added "api" before moon and planet related URIs
+- tested source code with thunder client
+    - everything has passed with 200 and 201 except REGISTER: expect a 400/404 because we cannot register two users with the same username
+    
+
+
 ## update Jan 13, 2023
 - refurnished Spring app 
 - recreated docker image named rollingNew. :latest and :rolling temporarily not in use
@@ -8,13 +18,6 @@
 - configured Jenkins
 - discovered issue with logging: localhost8080 generates log but cluster url does not
     - will set up other infrastructures and come back if needed
-
-
-
-
-
-
-
 
 ## update Jan 12, 2023
 - added imaged for static and rolling logs

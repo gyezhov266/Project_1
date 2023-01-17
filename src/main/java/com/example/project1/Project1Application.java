@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Project1Application {
 
 	public static void main(String[] args) {
-		System.out.println("Starting Planetarium");
 		SpringApplication.run(Project1Application.class, args);
 	}
 

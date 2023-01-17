@@ -38,7 +38,7 @@ public class PlanetService {
     }
 
     public String createPlanet(Planet planet){
-        this.planetDao.createPlanet(planet.getName(), planet.getOwnerId());
+        this.planetDao.createPlanet(planet.getId(), planet.getName(), planet.getOwnerId());
         return "Planet Created!";
     }
 

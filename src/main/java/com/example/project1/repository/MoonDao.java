@@ -15,10 +15,10 @@ public interface MoonDao extends JpaRepository<Moon,Integer>{
 
     @Transactional
     @Modifying
-    @Query(value = "insert into moons values (default, :name, :myplanetid)", nativeQuery = true)
-    void createMoon(@Param("name") String name, @Param("myplanetid")  int myplanetId);
+    @Query(value = "insert into moons values (:id, :name, :myplanetid)", nativeQuery = true)
+    void createMoon(@Param("id") int moonId, @Param("name") String name, @Param("myplanetid")  int myPlanetId);
 
     @Transactional
     @Query(value = "select * from  moons where myplanetid = :myplanetid", nativeQuery = true)
-    List<Moon> getMoonsFromPlanet(@Param("myplanetid")  int myplanetId);
+    List<Moon> getMoonsFromPlanet(@Param("myplanetid")  int myPlanetId);
 }
