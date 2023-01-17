@@ -1,5 +1,12 @@
 # Project Planetarium 
 
+## update Jan 17. 2023
+- GOOD NEWS: issues auto-fixed:
+    - pending prometheus external node auto replaced
+    - prometheus data source successfullly added
+    - jenkins pipeline successfully built without error messages
+- issue with logging: localhost8080 generates log but cluster url does not
+
 ## update Jan 16, 2023
 - added minor details to the source code
     - added DataIntegrityViolationException exception handler to prevent registering duplicate users
@@ -13,8 +20,6 @@
     - when doing "docker compose up -d", a Network project_2_default is being created... what is this?
     - one prometheus-external-node is pending...
     - prometheus data source not found on grafana. when manually adding, "Error reading Prometheus: An error occurred within the plugin"
-
-
 
 ## update Jan 13, 2023
 - refurnished Spring app 
