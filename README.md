@@ -6,6 +6,9 @@
     - prometheus data source successfullly added
     - jenkins pipeline successfully built without error messages
 - issue with logging: localhost8080 generates log but cluster url does not
+    - solved: updated webmvcconfig file and added /planetarium in the URI
+        - Collections can be run smoothly
+        - Cluster error logs (400) are not pushed to local logs but can be detected by Loki
 
 ## update Jan 16, 2023
 - added minor details to the source code
