@@ -9,8 +9,8 @@ scrape_configs:
     static_configs:
       - targets:
         - prometheus:9090
-  - job_name: project1
+  - job_name: project2
     metrics_path: /actuator/prometheus
     static_configs:
       - targets:
-        - app:8080
+        - project2:8080

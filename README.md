@@ -5,9 +5,13 @@
     - added DataIntegrityViolationException exception handler to prevent registering duplicate users
     - made id a mandatory entry when creating moon/planet to ensure better workflow
     - added "api" before moon and planet related URIs
+    - updated pom.xml and renamed mvn package as "project2"
 - tested source code with thunder client
     - everything has passed with 200 and 201 except REGISTER: expect a 400/404 because we cannot register two users with the same username
-    
+- docker image recreated and uploaded to the group account
+- discovered questions to be answered...
+    - when doing "docker compose up -d", a Network project_2_default is being created... what is this?
+
 
 
 ## update Jan 13, 2023

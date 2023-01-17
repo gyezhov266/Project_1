@@ -1,8 +1,8 @@
 groups:
-- name: example
+- name: alerts
   rules:
 
-    - alert: AppDown
+  - alert: AppDown
     expr: up == 0
     for: 5m
     labels:
@@ -21,7 +21,7 @@ groups:
       description: "Planetarium has been down for over 30 minutes"
 
   - alert: APIHighLatency:5min
-    expr: sum(rate(http_server_requests_seconds_sum{job="project1"}[5m])) / sum(rate(http_server_requests_seconds_count{job="project1"}[5m])) > 0.2
+    expr: sum(rate(http_server_requests_seconds_sum{job="project2"}[5m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[5m])) > 0.2
     labels:
       severity: warn
     annotations:
@@ -29,7 +29,7 @@ groups:
       description: "Planetarium is taking too long to handle requests in the past 5 minutes"
 
   - alert: APIHighLatency:15min
-    expr: sum(rate(http_server_requests_seconds_sum{job="project1"}[15m])) / sum(rate(http_server_requests_seconds_count{job="project1"}[15m])) > 0.2
+    expr: sum(rate(http_server_requests_seconds_sum{job="project2"}[15m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[15m])) > 0.2
     labels:
       severity: warn
     annotations:
@@ -37,7 +37,7 @@ groups:
       description: "Planetarium is taking too long to handle requests in the past 10 minutes"
 
   - alert: APIHighLatency:30min
-    expr: sum(rate(http_server_requests_seconds_sum{job="project1"}[30m])) / sum(rate(http_server_requests_seconds_count{job="project1"}[30m])) > 0.2
+    expr: sum(rate(http_server_requests_seconds_sum{job="project2"}[30m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[30m])) > 0.2
     labels:
       severity: warn
     annotations:
@@ -45,7 +45,7 @@ groups:
       description: "Planetarium is taking too long to handle requests in the past 30 minutes"
 
   - alert: APIHighLatency:1h
-    expr: sum(rate(http_server_requests_seconds_sum{job="project1"}[1h])) / sum(rate(http_server_requests_seconds_count{job="project1"}[1h])) > 0.2
+    expr: sum(rate(http_server_requests_seconds_sum{job="project2"}[1h])) / sum(rate(http_server_requests_seconds_count{job="project2"}[1h])) > 0.2
     labels:
       severity: warn
     annotations:
@@ -53,7 +53,7 @@ groups:
       description: "Planetarium is taking too long to handle requests in the past 1 hour"
 
   - alert: APILowSuccessRate:5m
-    expr: sum(rate(http_server_requests_seconds_count{job="project1", status!="500"}[5m])) / sum(rate(http_server_requests_seconds_count{job="project1"}[5m])) < 0.998
+    expr: sum(rate(http_server_requests_seconds_count{job="project2", status!="500"}[5m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[5m])) < 0.998
     labels:
       severity: warn
     annotations:
@@ -61,7 +61,7 @@ groups:
       description: "Planetarium is reporting too many 500 status codes in the past 5 minutes"
 
   - alert: APILowSuccessRate:15m
-    expr: sum(rate(http_server_requests_seconds_count{job="project1", status!="500"}[15m])) / sum(rate(http_server_requests_seconds_count{job="planetaproject1riumbeta"}[15m])) < 0.998
+    expr: sum(rate(http_server_requests_seconds_count{job="project2", status!="500"}[15m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[15m])) < 0.998
     labels:
       severity: warn
     annotations:
@@ -69,7 +69,7 @@ groups:
       description: "Planetarium is reporting too many 500 status codes in the past 15 minutes"
 
   - alert: APILowSuccessRate:30m
-    expr: sum(rate(http_server_requests_seconds_count{job="project1", status!="500"}[30m])) / sum(rate(http_server_requests_seconds_count{job="project1"}[30m])) < 0.998
+    expr: sum(rate(http_server_requests_seconds_count{job="project2", status!="500"}[30m])) / sum(rate(http_server_requests_seconds_count{job="project2"}[30m])) < 0.998
     labels:
       severity: warn
     annotations:
@@ -77,7 +77,7 @@ groups:
       description: "Planetarium is reporting too many 500 status codes in the past 30 minutes"
 
   - alert: APILowSuccessRate:1h
-    expr: sum(rate(http_server_requests_seconds_count{job="project1", status!="500"}[1h])) / sum(rate(http_server_requests_seconds_count{job="project1"}[1h])) < 0.998
+    expr: sum(rate(http_server_requests_seconds_count{job="project2", status!="500"}[1h])) / sum(rate(http_server_requests_seconds_count{job="project2"}[1h])) < 0.998
     labels:
       severity: warn
     annotations:

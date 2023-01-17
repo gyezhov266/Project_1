@@ -14,5 +14,5 @@ scrape_configs:
       - targets:
           - localhost
         labels:
-          job: project1
+          job: project2
           __path__: /var/log/rollingFile.log
